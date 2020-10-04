@@ -1,0 +1,17 @@
+.login {
+  display: flex;
+}
+
+.login-image {
+  width: 50%;
+}
+
+.login-image img {
+  height: 100vh;
+  width: 100%;
+  object-fit: cover;
+}
+
+.login-card {
+  width: 50%;
+}
