@@ -69,7 +69,6 @@ exports.login = catchAsync(async (req, res, next) => {
   }
 
   const user = await User.findOne({ email, otp });
-  console.log(user);
   if (!user) {
     return res.status(400).json({
       message: "Wrong OTP",

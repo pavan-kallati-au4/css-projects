@@ -2,6 +2,7 @@ const express = require("express");
 
 const app = express();
 const cors = require("cors");
+const path = require('path');
 
 const userRoutes = require("./routes/userRoutes");
 
@@ -16,5 +17,13 @@ app.all("*", (req, res, next) => {
     message: `Can't find ${req.originalUrl} on this server!`
   });
 });
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('frontend/build'));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+  });
+}
 
 module.exports = app;
